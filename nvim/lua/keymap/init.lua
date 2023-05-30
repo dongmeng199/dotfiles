@@ -61,7 +61,7 @@ nmap({
     -- nvimtree
     { ";e",         function() vim.cmd('Neotree reveal') end,     opts(noremap, silent) },
     { ";b",         function() vim.cmd('Neotree buffers') end,    opts(noremap, silent) },
-    { ";g",         function() vim.cmd('Neotree git_status') end, opts(noremap, silent) },
+    -- { ";g",         function() vim.cmd('Neotree git_status') end, opts(noremap, silent) },
 
     -- Telescope
     { '<Leader>b',  cmd('Telescope buffers'),                     opts(noremap, silent) },

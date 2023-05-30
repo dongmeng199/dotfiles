@@ -6,11 +6,11 @@ local cache_dir = helper.path_join(vim.fn.stdpath('cache'), 'nvim')
 -- Create cache dir and subs dir
 local createdir = function()
   local data_dir = {
-      cache_dir .. 'backup',
-      cache_dir .. 'session',
-      cache_dir .. 'swap',
-      cache_dir .. 'tags',
-      cache_dir .. 'undo',
+    cache_dir .. 'backup',
+    cache_dir .. 'session',
+    cache_dir .. 'swap',
+    cache_dir .. 'tags',
+    cache_dir .. 'undo',
   }
   -- There only check once that If cache_dir exists
   -- Then I don't want to check subs dir exists
