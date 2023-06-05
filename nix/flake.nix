@@ -41,6 +41,20 @@
           }
         ];
       };
+      macbook = darwinSystem {
+        # x86_64： CPU 架构
+        system = "x86_64-darwin";
+        modules = [
+          ./config.nix
+          home-manager.darwinModules.home-manager
+          {
+            nixpkgs = nixpkgsConfig;
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users."meng.dong" = import ./home-manager/home.nix;
+          }
+        ];
+      };
     };
 
     overlays = {

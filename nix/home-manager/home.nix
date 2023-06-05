@@ -10,9 +10,18 @@
 
     # Dev stuff
     jq
+    fx
     ripgrep
     fd
     httpie
+    ast-grep
+    nodePackages.cspell
+
+
+    # languages
+    go
+    python3
+
   ] ++ lib.optionals stdenv.isDarwin [
     cocoapods
     m-cli # useful macOS CLI commands

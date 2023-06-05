@@ -8,6 +8,7 @@
          $"/etc/profiles/per-user/($env.USER)/bin"
          "/run/current-system/sw/bin"
          "/nix/var/nix/profiles/default/bin"
+         "/opt/homebrew/bin"
          "/usr/local/bin"
          "/usr/bin"
          "/usr/sbin"
@@ -15,7 +16,7 @@
          "/sbin"
       ]
       let-env EDITOR = "nvim"
-      let-env http_proxy = "http://127.0.0.1:1087"
+      # let-env http_proxy = "http://127.0.0.1:1087"
     '';
 
     #configFile.text = ''
@@ -51,8 +52,9 @@
         "result/sw/bin/darwin-rebuild switch --flake .#mac-mini" | sh
       }
 
-      source /Users/dongmeng/.cache/starship/init.nu
-      source /Users/dongmeng/.cache/zoxide/init.nu
+      source ~/.cache/starship/init.nu
+      source ~/.cache/zoxide/init.nu
+
       tmux_auto_start
     '';
 

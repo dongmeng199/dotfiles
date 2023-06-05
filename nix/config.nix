@@ -52,4 +52,12 @@
       NSGlobalDomain.InitialKeyRepeat = 10;
       NSGlobalDomain.KeyRepeat = 1;
   };
+
+  homebrew = {
+    enable = true;
+    caskArgs.no_quarantine = true;
+    global.brewfile = true;
+    masApps = { };
+    # casks = [ "raycast" "amethyst" "google-chrome" "obsidian"];
+  };
 }
