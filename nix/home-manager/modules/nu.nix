@@ -17,6 +17,9 @@
       ]
       let-env EDITOR = "nvim"
       # let-env http_proxy = "http://127.0.0.1:1087"
+      let-env HOMEBREW_PREFIX = "/opt/homebrew"
+      let-env HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
+      let-env HOMEBREW_REPOSITORY = "/opt/homebrew"
     '';
 
     #configFile.text = ''
@@ -49,7 +52,7 @@
       def rebuild [] {
         let path = $"($env.HOME)/Code/dotfiles/nix"
         cd $path
-        "result/sw/bin/darwin-rebuild switch --flake .#mac-mini" | sh
+        "result/sw/bin/darwin-rebuild switch --flake .#macbook" | sh
       }
 
       source ~/.cache/starship/init.nu
@@ -62,7 +65,6 @@
     shellAliases = {
       v = "nvim";
       lg = "lazygit";
-      j = "joshuto";
     };
   };
 }
