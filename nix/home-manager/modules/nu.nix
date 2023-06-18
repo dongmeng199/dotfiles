@@ -9,6 +9,7 @@
          "/run/current-system/sw/bin"
          "/nix/var/nix/profiles/default/bin"
          "/opt/homebrew/bin"
+         $"/Users/($env.USER)/go/bin"
          "/usr/local/bin"
          "/usr/bin"
          "/usr/sbin"
@@ -55,6 +56,10 @@
         "result/sw/bin/darwin-rebuild switch --flake .#macbook" | sh
       }
 
+      def http [] {
+       ^http
+      }
+
       source ~/.cache/starship/init.nu
       source ~/.cache/zoxide/init.nu
 
@@ -64,6 +69,7 @@
 
     shellAliases = {
       v = "nvim";
+      j = "just";
       lg = "lazygit";
     };
   };

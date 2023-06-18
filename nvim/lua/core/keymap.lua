@@ -4,12 +4,12 @@ local opts = {}
 function opts:new(instance)
   instance = instance
       or {
-          options = {
-              silent = false,
-              nowait = false,
-              expr = false,
-              noremap = false,
-          },
+        options = {
+          silent = false,
+          nowait = false,
+          expr = false,
+          noremap = false,
+        },
       }
   setmetatable(instance, self)
   self.__index = self
@@ -76,7 +76,7 @@ end
 --@private
 local keymap_set = function(mode, tbl)
   vim.validate({
-      tbl = { tbl, 'table' },
+    tbl = { tbl, 'table' },
   })
   local len = #tbl
   if len < 2 then
@@ -92,7 +92,7 @@ end
 local function map(mod)
   return function(tbl)
     vim.validate({
-        tbl = { tbl, 'table' },
+      tbl = { tbl, 'table' },
     })
 
     if type(tbl[1]) == 'table' and type(tbl[2]) == 'table' then

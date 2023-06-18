@@ -2,8 +2,8 @@
 {
   programs.git = {
     enable = true;
-#    userName = "Johannes Schickling";
-#    userEmail = "schickling.j@gmail.com";
+    userName = "meng.dong";
+    userEmail = "2497223924@qq.com";
 
     delta = {
       enable = true;
@@ -26,6 +26,12 @@
       core.ignorecase = false;
 
       merge.conflictstyle = "diff3";
+
+      url = {
+        "ssh://git@gitlab.hoxigames.com" = {
+          insteadOf = "https://gitlab.hoxigames.com";
+        };
+      };
     };
   };
 }

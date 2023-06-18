@@ -13,15 +13,18 @@
     fx
     ripgrep
     fd
+    just
     httpie
     ast-grep
     nodePackages.cspell
-
+    golangci-lint
+    protobuf3_20
+    protoc-gen-go
+    protoc-gen-go-grpc
 
     # languages
     go
     python3
-
   ] ++ lib.optionals stdenv.isDarwin [
     cocoapods
     m-cli # useful macOS CLI commands
@@ -40,6 +43,7 @@
     direnv = {
       enable = true;
       nix-direnv.enable = true;
+      enableNushellIntegration = true;
     };
     neovim = {
       enable = true;
