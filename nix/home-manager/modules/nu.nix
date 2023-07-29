@@ -17,7 +17,6 @@
          "/sbin"
       ]
       let-env EDITOR = "nvim"
-      # let-env http_proxy = "http://127.0.0.1:1087"
       let-env HOMEBREW_PREFIX = "/opt/homebrew"
       let-env HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
       let-env HOMEBREW_REPOSITORY = "/opt/homebrew"
@@ -69,8 +68,9 @@
 
     shellAliases = {
       v = "nvim";
-      j = "just";
+      j = "just --choose";
       lg = "lazygit";
+      ld = "lazydocker";
     };
   };
 }

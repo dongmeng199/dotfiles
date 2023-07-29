@@ -8,6 +8,8 @@
     curl
     wget
 
+    lazydocker
+    mycli
     # Dev stuff
     jq
     fx
@@ -21,6 +23,8 @@
     protobuf3_20
     protoc-gen-go
     protoc-gen-go-grpc
+    sd
+    neovide
 
     # languages
     go
@@ -58,6 +62,10 @@
     zoxide = {
       enable = true;
       enableNushellIntegration = false;
+    };
+
+    fzf = {
+      enable = true;
     };
   };
 }

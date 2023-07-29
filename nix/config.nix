@@ -58,7 +58,6 @@
     caskArgs.no_quarantine = true;
     global.brewfile = true;
     masApps = { };
-    #casks = [ "raycast" "amethyst" "google-chrome" "obsidian"];
-    casks = [ "raycast" "amethyst" "obsidian" "dropbox"];
+    casks = [ "raycast" "obsidian" "dropbox"];
   };
 }
