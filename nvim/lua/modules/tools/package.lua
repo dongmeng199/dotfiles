@@ -12,6 +12,10 @@ package({
 })
 
 package({
+  "desdic/agrolens.nvim"
+})
+
+package({
   'glepnir/hlsearch.nvim',
   event = 'BufRead',
   config = function()
@@ -29,8 +33,8 @@ package({
         playMacro = "Q",
         switchSlot = "<C-q>",
         editMacro = "cq",
-        yankMacro = "yq",     -- also decodes it for turning macros to mappings
-        addBreakPoint = "##", -- ⚠️ this should be a string you don't use in insert mode during a macro
+        yankMacro = "yq",    -- also decodes it for turning macros to mappings
+        addBreakPoint = "#", -- ⚠️ this should be a string you don't use in insert mode during a macro
       },
       require("recorder").recordingStatus()
     }
@@ -48,13 +52,21 @@ package({
 })
 
 package({
-  'willothy/flatten.nvim',
-  config = true,
-  -- or pass configuration with
-  -- opts = {  }
-  -- Ensure that it runs first to minimize delay when opening file from terminal
-  lazy = false,
-  priority = 1001,
+  "samjwill/nvim-unception",
+  init = function()
+    vim.api.nvim_create_autocmd(
+      "User",
+      {
+        pattern = "UnceptionEditRequestReceived",
+        callback = function()
+          -- Toggle the terminal off.
+          require('FTerm').close()
+          require("internal.lazygit"):close()
+        end
+      }
+    )
+    vim.g.unception_open_buffer_in_new_tab = true
+  end
 })
 
 package({
@@ -65,16 +77,25 @@ package({
 })
 
 package({
-  "aserowy/tmux.nvim",
-  config = function() return require("tmux").setup() end
+  "nicwest/vim-camelsnek",
 })
 
-
+package({
+  "folke/flash.nvim",
+  event = "VeryLazy",
+  opts = conf.flash,
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end },
+    { "S", mode = { "n", "o", "x" }, function() require("flash").treesitter() end },
+  },
+})
 
 package({
-  "ggandor/leap.nvim",
-  config = function()
-    require('leap').add_default_mappings()
-    vim.api.nvim_set_hl(0, 'LeapLabelPrimary', { fg = 'white', bg = 'gray' })
-  end
+  "folke/noice.nvim",
+  event = "VeryLazy",
+  opts = conf.noice,
+  dependencies = {
+    "MunifTanjim/nui.nvim",
+    "rcarriga/nvim-notify",
+  }
 })

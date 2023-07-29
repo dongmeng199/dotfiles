@@ -1,5 +1,67 @@
 local config = {}
 
+function config.flash()
+  local opts = {
+    label = {
+      uppercase = false,
+      rainbow = {
+        enabled = true,
+        -- number between 1 and 9
+        shade = 5,
+      },
+    },
+    jump = {
+      -- clear highlight after jump
+      nohlsearch = true,
+      autojump = false,
+    },
+    modes = {
+      search = {
+        enabled = false,
+      }
+    }
+  }
+  return opts
+end
+
+function config.noice()
+  local opts = {
+    notify = {
+      enabled = false,
+      view = "notify",
+    },
+
+    lsp = {
+      message = {
+        enabled = false,
+      },
+      progress = {
+        enabled = false,
+      },
+      override = {
+        ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+        ["vim.lsp.util.stylize_markdown"] = true,
+        ["cmp.entry.get_documentation"] = true,
+      },
+    },
+    routes = {
+      {
+        filter = {
+          find = "E486: 找不到模式:",
+        },
+        opts = { skip = true },
+      },
+      {
+        filter = {
+          find = "Recorded",
+        },
+        opts = { skip = true },
+      },
+
+    },
+  }
+  return opts
+end
 
 function config.vgit()
   require('vgit').setup({
@@ -78,6 +140,7 @@ function config.telescope()
   })
   telescope.load_extension('fzy_native')
   telescope.load_extension('leaderf')
+  telescope.load_extension("agrolens")
 end
 
 return config
