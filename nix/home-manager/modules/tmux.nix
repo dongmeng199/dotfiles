@@ -14,9 +14,13 @@
       set -g default-command "${pkgs.nushell}/bin/nu"
 
       set -g display-panes-time 4000
+      unbind '"'
+      unbind %
+      unbind c
 
-      bind-key -n C-s split-window \; select-layout  'main-vertical' 
-      bind-key -n C-z resize-pane -Z
+      bind t new-window 
+      bind p previous-window
+      bind n next-window
     '';
 
     plugins = [
