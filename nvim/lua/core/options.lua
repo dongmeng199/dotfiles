@@ -70,27 +70,26 @@ opt.spelloptions = 'camel'
 opt.textwidth = 100
 opt.colorcolumn = '100'
 
-
 opt.cursorline = true
 opt.ls = 0
 opt.ch = 0
 opt.splitright = true
 opt.splitbelow = true
 opt.splitkeep = 'screen'
-
+opt.guifont = 'SauceCodePro Nerd Font:h24'
 
 if vim.loop.os_uname().sysname == 'Darwin' then
   vim.g.clipboard = {
-      name = 'macOS-clipboard',
-      copy = {
-          ['+'] = 'pbcopy',
-          ['*'] = 'pbcopy',
-      },
-      paste = {
-          ['+'] = 'pbpaste',
-          ['*'] = 'pbpaste',
-      },
-      cache_enabled = 0,
+    name = 'macOS-clipboard',
+    copy = {
+      ['+'] = 'pbcopy',
+      ['*'] = 'pbcopy',
+    },
+    paste = {
+      ['+'] = 'pbpaste',
+      ['*'] = 'pbpaste',
+    },
+    cache_enabled = 0,
   }
   vim.g.python_host_prog = '/usr/bin/python'
   vim.g.python3_host_prog = '/usr/local/bin/python3'

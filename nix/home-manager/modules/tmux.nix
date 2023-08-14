@@ -5,7 +5,7 @@
     escapeTime = 0;
     baseIndex = 1;
     mouse = true;
-    prefix = "C-t";
+    prefix = "C-e";
     shell = "${pkgs.nushell}/bin/nu";
     newSession = true;
     extraConfig = ''

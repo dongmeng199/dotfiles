@@ -4,12 +4,12 @@
     enable = true;
     envFile.text = ''
       let-env PATH =  [
-         $"/Users/($env.USER)/.nix-profile/bin"
+         $"($env.HOME)/.nix-profile/bin"
          $"/etc/profiles/per-user/($env.USER)/bin"
          "/run/current-system/sw/bin"
          "/nix/var/nix/profiles/default/bin"
          "/opt/homebrew/bin"
-         $"/Users/($env.USER)/go/bin"
+         $"($env.HOME)/go/bin"
          "/usr/local/bin"
          "/usr/bin"
          "/usr/sbin"
@@ -17,6 +17,7 @@
          "/sbin"
       ]
       let-env EDITOR = "nvim"
+      let-env XDG_CONFIG_HOME = $"($env.HOME)/code/dotfiles"
       let-env HOMEBREW_PREFIX = "/opt/homebrew"
       let-env HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
       let-env HOMEBREW_REPOSITORY = "/opt/homebrew"
@@ -58,6 +59,14 @@
       def http [] {
        ^http
       }
+
+
+      def proxy [] {
+        let-env https_proxy = "http://127.0.0.1:7890"
+        let-env http_proxy = "http://127.0.0.1:7890" 
+        let-env all_proxy = "socks5://127.0.0.1:7890"
+      }
+
 
       source ~/.cache/starship/init.nu
       source ~/.cache/zoxide/init.nu

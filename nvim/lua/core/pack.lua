@@ -5,9 +5,11 @@ pack.__index = pack
 
 function pack:load_modules_packages()
   local modules_dir = self.helper.path_join(self.config_path, 'lua', 'modules')
+  vim.notify(modules_dir)
   self.repos = {}
 
-  local list = vim.fs.find('package.lua', { path = modules_dir, type = 'file', limit = 10 })
+  local list = vim.split(fn.glob(modules_dir .. '/plugins/*.lua'), '\n')
+
   if #list == 0 then
     return
   end
@@ -17,6 +19,9 @@ function pack:load_modules_packages()
   if fn.exists('g:disable_modules') == 1 then
     disable_modules = vim.split(vim.g.disable_modules, ',', { trimempty = true })
   end
+
+  package.path = package.path
+    .. string.format(';%s;%s', modules_dir .. '/configs/?.lua', modules_dir .. '/configs/?/init.lua')
 
   for _, f in pairs(list) do
     local _, pos = f:find(modules_dir)
