@@ -71,11 +71,6 @@ local disable_distribution_plugins = function()
 	-- vim.g.loaded_remote_plugins = 1
 end
 
-local leader_map = function()
-	vim.g.mapleader = " "
-	vim.api.nvim_set_keymap("n", " ", "", { noremap = true })
-	vim.api.nvim_set_keymap("x", " ", "", { noremap = true })
-end
 
 local neovide_config = function()
 	vim.api.nvim_set_option_value("guifont", "JetBrainsMono Nerd Font:h15", {})
@@ -89,30 +84,6 @@ local neovide_config = function()
 	vim.g.neovide_cursor_vfx_particle_lifetime = 1.2
 	vim.g.neovide_cursor_vfx_particle_speed = 20.0
 	vim.g.neovide_cursor_vfx_particle_density = 5.0
-end
-
-local clipboard_config = function()
-	if global.is_mac then
-		vim.g.clipboard = {
-			name = "macOS-clipboard",
-			copy = { ["+"] = "pbcopy", ["*"] = "pbcopy" },
-			paste = { ["+"] = "pbpaste", ["*"] = "pbpaste" },
-			cache_enabled = 0,
-		}
-	elseif global.is_wsl then
-		vim.g.clipboard = {
-			name = "win32yank-wsl",
-			copy = {
-				["+"] = "win32yank.exe -i --crlf",
-				["*"] = "win32yank.exe -i --crlf",
-			},
-			paste = {
-				["+"] = "win32yank.exe -o --lf",
-				["*"] = "win32yank.exe -o --lf",
-			},
-			cache_enabled = 0,
-		}
-	end
 end
 
 local shell_config = function()
@@ -146,14 +117,11 @@ end
 local load_core = function()
 	createdir()
 	disable_distribution_plugins()
-	leader_map()
 
 	neovide_config()
-	clipboard_config()
 	shell_config()
 
 	require("core.options")
-	require("core.mapping")
 	require("keymap")
 	require("core.event")
 	require("core.pack")

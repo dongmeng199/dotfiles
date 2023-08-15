@@ -1,5 +1,10 @@
 local map = require("core.keymap")
 
+vim.g.mapleader = " "
+
+map({"n","x"}, " ", "", { noremap = true , desc = "space"})
+map({"n","x"}, ";", "", { noremap = true , desc = ";"})
+
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
@@ -40,18 +45,8 @@ map("i", ";", ";<c-g>u")
 -- save file
 map({ "i", "v", "n", "s" }, "<C-s>", "<cmd>w<cr><esc>", { desc = "Save file" })
 
---keywordprg
-map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
-
--- better indenting
-map("v", "<", "<gv")
-map("v", ">", ">gv")
-
-map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
-map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-
 -- quit
-map("n", ";q", function()
+map("n", "<C-q>", function()
 	if vim.api.nvim_buf_get_name(0) == "" then
 		vim.cmd("q!")
 	else
@@ -59,12 +54,23 @@ map("n", ";q", function()
 	end
 end, { noremap = true, silent = true, desc = "quit and save" })
 
+--keywordprg
+map("n", "<leader>K", "<cmd>norm! K<cr>", { desc = "Keywordprg" })
+
+-- better indenting
+map("v", "<", "<gv")
+map("v", ">", ">gv")
+
+--map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
+--map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
+
+
 -- highlights under cursor
 if vim.fn.has("nvim-0.9.0") == 1 then
 	map("n", "<leader>ui", vim.show_pos, { desc = "Inspect Pos" })
 end
 
-map("i", "<C-u>", "<C-G>u<C-U>", { noremap = true, desc = "edit: Delete previous block" }))
+map("i", "<C-u>", "<C-G>u<C-U>", { noremap = true, desc = "edit: Delete previous block" })
 map("i", "<C-b>", "<Left>", { noremap = true, desc = "edit: Move cursor to left" })
 map("i", "<C-f>", "<right>", { noremap = true, desc = "edit: Move cursor to left" })
 map("i", "<C-a>", "<ESC>^i", { noremap = true, desc = "edit: Move cursor to line start" })

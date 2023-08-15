@@ -13,16 +13,16 @@ function autocmd.nvim_create_augroups(definitions)
 	end
 end
 
-local mapping = require("keymap.completion")
-vim.api.nvim_create_autocmd("LspAttach", {
-	group = vim.api.nvim_create_augroup("LspKeymapLoader", { clear = true }),
-	callback = function(event)
-		if not _G._debugging then
-			mapping.lsp(event.buf)
-		end
-	end,
-})
-
+-- local mapping = require("keymap.completion")
+-- vim.api.nvim_create_autocmd("LspAttach", {
+-- 	group = vim.api.nvim_create_augroup("LspKeymapLoader", { clear = true }),
+-- 	callback = function(event)
+-- 		if not _G._debugging then
+-- 			mapping.lsp(event.buf)
+-- 		end
+-- 	end,
+-- })
+--
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
 		"qf",
@@ -38,10 +38,11 @@ vim.api.nvim_create_autocmd("FileType", {
 		"startuptime",
 		"tsplayground",
 		"PlenaryTestPopup",
+		"FTerm",
 	},
 	callback = function(event)
 		vim.bo[event.buf].buflisted = false
-		vim.api.nvim_buf_set_keymap(event.buf, "n", "q", "<CMD>close<CR>", { silent = true })
+		vim.api.nvim_buf_set_keymap(event.buf, "n", "<ESC><ESC>", "<CMD>close<CR>", { silent = true })
 	end,
 })
 
@@ -81,11 +82,6 @@ function autocmd.load_autocmds()
 				"*",
 				[[if line("'\"") > 1 && line("'\"") <= line("$") | execute "normal! g'\"" | endif]],
 			},
-			-- Auto toggle fcitx5
-			-- {"InsertLeave", "* :silent", "!fcitx5-remote -c"},
-			-- {"BufCreate", "*", ":silent !fcitx5-remote -c"},
-			-- {"BufEnter", "*", ":silent !fcitx5-remote -c "},
-			-- {"BufLeave", "*", ":silent !fcitx5-remote -c "}
 		},
 		wins = {
 			-- Highlight current line only on focused window
