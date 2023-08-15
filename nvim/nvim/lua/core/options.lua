@@ -1,139 +1,96 @@
-local global = require("core.global")
+local opt = vim.opt
+local cache_dir = vim.env.HOME .. "/.cache/nvim/"
 
-local function load_options()
-	local global_local = {
-		-- backupdir = global.cache_dir .. "backup/",
-		-- directory = global.cache_dir .. "swap/",
-		-- spellfile = global.cache_dir .. "spell/en.uft-8.add",
-		-- viewdir = global.cache_dir .. "view/",
-		autoindent = true,
-		autoread = true,
-		autowrite = true,
-		backspace = "indent,eol,start",
-		backup = false,
-		backupskip = "/tmp/*,$TMPDIR/*,$TMP/*,$TEMP/*,*/shm/*,/private/var/*,.vault.vim",
-		breakat = [[\ \	;:,!?]],
-		breakindentopt = "shift:2,min:20",
-		clipboard = "unnamedplus",
-		cmdheight = 1, -- 0, 1, 2
-		cmdwinheight = 5,
-		complete = ".,w,b,k",
-		completeopt = "menuone,noselect",
-		concealcursor = "niv",
-		conceallevel = 0,
-		cursorcolumn = true,
-		cursorline = true,
-		diffopt = "filler,iwhite,internal,linematch:60,algorithm:patience",
-		display = "lastline",
-		encoding = "utf-8",
-		equalalways = false,
-		errorbells = true,
-		expandtab = true,
-		fileformats = "unix,mac,dos",
-		foldenable = true,
-		foldlevelstart = 99,
-		formatoptions = "1jcroql",
-		grepformat = "%f:%l:%c:%m",
-		grepprg = "rg --hidden --vimgrep --smart-case --",
-		helpheight = 12,
-		hidden = true,
-		history = 2000,
-		ignorecase = true,
-		inccommand = "nosplit",
-		incsearch = true,
-		infercase = true,
-		jumpoptions = "stack",
-		laststatus = 2,
-		linebreak = true,
-		list = true,
-		listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←",
-		magic = true,
-		mousescroll = "ver:3,hor:6",
-		number = true,
-		previewheight = 12,
-		-- Do NOT adjust the following option (pumblend) if you're using transparent background
-		pumblend = 0,
-		pumheight = 15,
-		redrawtime = 1500,
-		relativenumber = true,
-		ruler = true,
-		scrolloff = 2,
-		sessionoptions = "buffers,curdir,folds,help,tabpages,winpos,winsize",
-		shada = "!,'500,<50,@100,s10,h",
-		shiftround = true,
-		shiftwidth = 4,
-		shortmess = "aoOTIcF",
-		showbreak = "↳  ",
-		showcmd = false,
-		showmode = false,
-		showtabline = 2,
-		sidescrolloff = 5,
-		signcolumn = "yes",
-		smartcase = true,
-		smarttab = true,
-		softtabstop = 4,
-		splitbelow = true,
-		splitkeep = "screen",
-		splitright = true,
-		startofline = false,
-		swapfile = false,
-		switchbuf = "usetab,uselast",
-		synmaxcol = 2500,
-		tabstop = 4,
-		termguicolors = true,
-		timeout = true,
-		timeoutlen = 300,
-		ttimeout = true,
-		ttimeoutlen = 0,
-		undodir = global.cache_dir .. "undo/",
-		undofile = true,
-		-- Please do NOT set `updatetime` to above 500, otherwise most plugins may not function correctly
-		updatetime = 200,
-		viewoptions = "folds,cursor,curdir,slash,unix",
-		virtualedit = "block",
-		visualbell = true,
-		whichwrap = "h,l,<,>,[,],~",
-		wildignore = ".git,.hg,.svn,*.pyc,*.o,*.out,*.jpg,*.jpeg,*.png,*.gif,*.zip,**/tmp/**,*.DS_Store,**/node_modules/**,**/bower_modules/**",
-		wildignorecase = true,
-		-- Do NOT adjust the following option (winblend) if you're using transparent background
-		winblend = 0,
-		winminwidth = 10,
-		winwidth = 30,
-		wrap = false,
-		wrapscan = true,
-		writebackup = false,
-	}
+opt.termguicolors = true
+opt.hidden = true
+opt.magic = true
+opt.virtualedit = "block"
+opt.clipboard = "unnamedplus"
+opt.wildignorecase = true
+opt.swapfile = false
+opt.directory = cache_dir .. "swap/"
+opt.undodir = cache_dir .. "undo/"
+opt.backupdir = cache_dir .. "backup/"
+opt.viewdir = cache_dir .. "view/"
+opt.spellfile = cache_dir .. "spell/en.uft-8.add"
+opt.history = 2000
+opt.timeout = true
+opt.ttimeout = true
+opt.timeoutlen = 500
+opt.ttimeoutlen = 10
+opt.updatetime = 100
+opt.redrawtime = 1500
+opt.ignorecase = true
+opt.smartcase = true
+opt.infercase = true
 
-	local function isempty(s)
-		return s == nil or s == ""
-	end
-	local function use_if_defined(val, fallback)
-		return val ~= nil and val or fallback
-	end
-
-	-- custom python provider
-	local conda_prefix = os.getenv("CONDA_PREFIX")
-	if not isempty(conda_prefix) then
-		vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, conda_prefix .. "/bin/python")
-		vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, conda_prefix .. "/bin/python")
-	else
-		vim.g.python_host_prog = use_if_defined(vim.g.python_host_prog, "python")
-		vim.g.python3_host_prog = use_if_defined(vim.g.python3_host_prog, "python3")
-	end
-
-	for name, value in pairs(global_local) do
-		vim.o[name] = value
-	end
-
-	-- Fix sqlite3 missing-lib issue on Windows
-	if global.is_windows then
-		-- Download the DLLs form https://www.sqlite.org/download.html
-		vim.g.sqlite_clib_path = global.home .. "/Documents/sqlite-dll-win64-x64-3400200/sqlite3.dll"
-	end
-
-	vim.opt.ls = 0
-	vim.opt.ch = 0
-	vim.opt.showtabline = 0
+if vim.fn.executable("rg") == 1 then
+	opt.grepformat = "%f:%l:%c:%m,%f:%l:%m"
+	opt.grepprg = "rg --vimgrep --no-heading --smart-case"
 end
 
-load_options()
+opt.completeopt = "menu,menuone,noselect"
+opt.showmode = false
+opt.shortmess = "aoOTIcF"
+opt.scrolloff = 2
+opt.sidescrolloff = 5
+opt.ruler = false
+opt.showtabline = 0
+opt.winwidth = 30
+opt.pumheight = 15
+opt.showcmd = false
+
+opt.cmdheight = 0
+opt.laststatus = 3
+opt.list = true
+opt.listchars = "tab:»·,nbsp:+,trail:·,extends:→,precedes:←"
+opt.pumblend = 10
+opt.winblend = 10
+opt.undofile = true
+
+opt.smarttab = true
+opt.expandtab = true
+opt.autoindent = true
+opt.tabstop = 2
+opt.shiftwidth = 2
+
+-- wrap
+opt.linebreak = true
+opt.whichwrap = "h,l,<,>,[,],~"
+opt.breakindentopt = "shift:2,min:20"
+opt.showbreak = "↳ "
+
+opt.foldlevelstart = 99
+opt.foldmethod = "marker"
+
+opt.number = true
+opt.signcolumn = "yes"
+opt.spelloptions = "camel"
+
+opt.textwidth = 100
+opt.colorcolumn = "100"
+
+opt.cursorline = true
+opt.ls = 0
+opt.ch = 0
+opt.splitright = true
+opt.splitbelow = true
+opt.splitkeep = "screen"
+opt.guifont = "SauceCodePro Nerd Font:h24"
+
+if vim.loop.os_uname().sysname == "Darwin" then
+	vim.g.clipboard = {
+		name = "macOS-clipboard",
+		copy = {
+			["+"] = "pbcopy",
+			["*"] = "pbcopy",
+		},
+		paste = {
+			["+"] = "pbpaste",
+			["*"] = "pbpaste",
+		},
+		cache_enabled = 0,
+	}
+	vim.g.python_host_prog = "/usr/bin/python"
+	vim.g.python3_host_prog = "/usr/local/bin/python3"
+end

@@ -1,16 +1,15 @@
 local ui = {}
 
-ui["Jint-lzxy/nvim"] = {
+ui["catppuccin/nvim"] = {
 	lazy = false,
-	branch = "refactor/syntax-highlighting",
 	name = "catppuccin",
 	config = require("ui.catppuccin"),
 }
-ui["lewis6991/gitsigns.nvim"] = {
-	lazy = true,
-	event = { "CursorHold", "CursorHoldI" },
-	config = require("ui.gitsigns"),
-}
+-- ui["lewis6991/gitsigns.nvim"] = {
+-- 	lazy = true,
+-- 	event = { "CursorHold", "CursorHoldI" },
+-- 	config = require("ui.gitsigns"),
+-- }
 ui["lukas-reineke/indent-blankline.nvim"] = {
 	lazy = true,
 	event = "BufReadPost",
@@ -37,14 +36,6 @@ ui["rcarriga/nvim-notify"] = {
 	event = "VeryLazy",
 	config = require("ui.notify"),
 }
--- ui["folke/noice.nvim"] = {
--- 	event = "VeryLazy",
--- 	opts = require("ui.noice"),
--- 	dependencies = {
--- 		"MunifTanjim/nui.nvim",
--- 		"rcarriga/nvim-notify",
--- 	},
--- }
 ui["numToStr/FTerm.nvim"] = {}
 
 return ui
