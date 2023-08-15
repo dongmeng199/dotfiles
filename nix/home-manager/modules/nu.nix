@@ -17,7 +17,7 @@
          "/sbin"
       ]
       let-env EDITOR = "nvim"
-      let-env XDG_CONFIG_HOME = $"($env.HOME)/code/dotfiles"
+      let-env XDG_CONFIG_HOME = $"($env.HOME)/code/dotfiles/nvim"
       let-env HOMEBREW_PREFIX = "/opt/homebrew"
       let-env HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
       let-env HOMEBREW_REPOSITORY = "/opt/homebrew"
