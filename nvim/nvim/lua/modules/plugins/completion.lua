@@ -24,20 +24,33 @@ completion["dnlhc/glance.nvim"] = {
 	event = "LspAttach",
 	config = require("completion.glance"),
 }
-completion["simrat39/symbols-outline.nvim"] = {
-	lazy = true,
-	event = "LspAttach",
-	config = require("completion.symbols-outline"),
-}
-completion["jose-elias-alvarez/null-ls.nvim"] = {
+
+completion["nvimdev/guard.nvim"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
-	config = require("completion.null-ls"),
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"jay-babu/mason-null-ls.nvim",
-	},
+  config = function ()
+    local ft = require('guard.filetype')
+
+    ft('go'):fmt('lsp')
+        :append('golines')
+
+    require('guard').setup({
+        fmt_on_save = true,
+        lsp_as_default_formatter = true,
+    })
+  end
 }
+
+ completion["jose-elias-alvarez/null-ls.nvim"] = {
+ 	lazy = true,
+  ft = 'go',
+ 	event = { "CursorHold", "CursorHoldI" },
+ 	config = require("completion.null-ls"),
+ 	dependencies = {
+ 		"nvim-lua/plenary.nvim",
+ 		"jay-babu/mason-null-ls.nvim",
+ 	},
+ }
 completion["hrsh7th/nvim-cmp"] = {
 	lazy = true,
 	event = "InsertEnter",

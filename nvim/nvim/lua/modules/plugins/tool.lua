@@ -5,11 +5,20 @@ tool["ibhagwan/smartyank.nvim"] = {
 	event = "BufReadPost",
 	config = require("tool.smartyank"),
 }
-tool["folke/trouble.nvim"] = {
-	lazy = true,
-	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
-	config = require("tool.trouble"),
+
+tool["jghauser/mkdir.nvim"] = {}
+
+tool["windwp/nvim-autopairs"] = {
+	config = function()
+		require("nvim-autopairs").setup({})
+	end,
 }
+
+-- tool["folke/trouble.nvim"] = {
+-- 	lazy = true,
+-- 	cmd = { "Trouble", "TroubleToggle", "TroubleRefresh" },
+-- 	config = require("tool.trouble"),
+-- }
 
 ----------------------------------------------------------------------
 --                        Telescope Plugins                         --

@@ -54,6 +54,18 @@ editor["lambdalisue/suda.vim"] = {
 	config = require("editor.suda"),
 }
 
+
+editor["nvim-neorg/neorg"] = {
+  run = ":Neorg sync-parsers",
+  ft = "norg",
+  after = "nvim-treesitter",
+  config = function ()
+      require('neorg').setup {
+      }
+  end
+}
+
+
 ----------------------------------------------------------------------
 --                  :treesitter related plugins                    --
 ----------------------------------------------------------------------

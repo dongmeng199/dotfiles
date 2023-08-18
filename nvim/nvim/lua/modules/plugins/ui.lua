@@ -5,11 +5,6 @@ ui["catppuccin/nvim"] = {
 	name = "catppuccin",
 	config = require("ui.catppuccin"),
 }
--- ui["lewis6991/gitsigns.nvim"] = {
--- 	lazy = true,
--- 	event = { "CursorHold", "CursorHoldI" },
--- 	config = require("ui.gitsigns"),
--- }
 ui["lukas-reineke/indent-blankline.nvim"] = {
 	lazy = true,
 	event = "BufReadPost",
@@ -37,5 +32,8 @@ ui["rcarriga/nvim-notify"] = {
 	config = require("ui.notify"),
 }
 ui["numToStr/FTerm.nvim"] = {}
+ui["tanvirtin/vgit.nvim"] = {
+	config = require("ui.vgit"),
+}
 
 return ui
