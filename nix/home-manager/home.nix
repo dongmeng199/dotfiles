@@ -24,7 +24,6 @@
     protoc-gen-go
     protoc-gen-go-grpc
     sd
-    neovide
 
     # languages
     go

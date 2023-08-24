@@ -43,6 +43,7 @@
   # Keyboard
   system.keyboard.enableKeyMapping = true;
   system.keyboard.remapCapsLockToEscape = true;
+  users.users."meng.dong".home = "/Users/meng.dong";
 
   system.defaults = {
       finder.AppleShowAllExtensions = true;

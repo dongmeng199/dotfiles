@@ -3,7 +3,7 @@
   programs.nushell = {
     enable = true;
     envFile.text = ''
-      let-env PATH =  [
+      $env.PATH =  [
          $"($env.HOME)/.nix-profile/bin"
          $"/etc/profiles/per-user/($env.USER)/bin"
          "/run/current-system/sw/bin"
@@ -16,11 +16,12 @@
          "/bin"
          "/sbin"
       ]
-      let-env EDITOR = "nvim"
-      let-env XDG_CONFIG_HOME = $"($env.HOME)/code/dotfiles/nvim"
-      let-env HOMEBREW_PREFIX = "/opt/homebrew"
-      let-env HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
-      let-env HOMEBREW_REPOSITORY = "/opt/homebrew"
+      $env.EDITOR = "nvim"
+      $env.XDG_CONFIG_HOME = $"($env.HOME)/code/dotfiles/nvim"
+      $env.NVIM_APPNAME = "lazy"
+      $env.HOMEBREW_PREFIX = "/opt/homebrew"
+      $env.HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
+      $env.HOMEBREW_REPOSITORY = "/opt/homebrew"
     '';
 
     #configFile.text = ''
@@ -62,9 +63,9 @@
 
 
       def proxy [] {
-        let-env https_proxy = "http://127.0.0.1:7890"
-        let-env http_proxy = "http://127.0.0.1:7890" 
-        let-env all_proxy = "socks5://127.0.0.1:7890"
+        $env.https_proxy = "http://127.0.0.1:7890"
+        $env.http_proxy = "http://127.0.0.1:7890" 
+        $env.all_proxy = "socks5://127.0.0.1:7890"
       }
 
 
