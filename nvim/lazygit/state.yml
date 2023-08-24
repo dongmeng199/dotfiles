@@ -1,6 +1,10 @@
 lastupdatecheck: 0
 recentrepos:
 - /Users/meng.dong/code/dotfiles
+- /Users/meng.dong/code/company/vistory_server
+- /Users/meng.dong/code/company/vistory
+- /Users/meng.dong/code/company/vistory_api
 startuppopupversion: 5
 customcommandshistory: []
 hidecommandlog: false
+ignorewhitespaceindiffview: false
