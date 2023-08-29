@@ -28,29 +28,28 @@ completion["dnlhc/glance.nvim"] = {
 completion["nvimdev/guard.nvim"] = {
 	lazy = true,
 	event = { "CursorHold", "CursorHoldI" },
-  config = function ()
-    local ft = require('guard.filetype')
+	config = function()
+		local ft = require("guard.filetype")
 
-    ft('go'):fmt('lsp')
-        :append('golines')
+		ft("go"):fmt("lsp"):append("golines")
 
-    require('guard').setup({
-        fmt_on_save = true,
-        lsp_as_default_formatter = true,
-    })
-  end
+		require("guard").setup({
+			fmt_on_save = true,
+			lsp_as_default_formatter = true,
+		})
+	end,
 }
 
- completion["jose-elias-alvarez/null-ls.nvim"] = {
- 	lazy = true,
-  ft = 'go',
- 	event = { "CursorHold", "CursorHoldI" },
- 	config = require("completion.null-ls"),
- 	dependencies = {
- 		"nvim-lua/plenary.nvim",
- 		"jay-babu/mason-null-ls.nvim",
- 	},
- }
+completion["jose-elias-alvarez/null-ls.nvim"] = {
+	lazy = true,
+	ft = "go",
+	event = { "CursorHold", "CursorHoldI" },
+	config = require("completion.null-ls"),
+	dependencies = {
+		"nvim-lua/plenary.nvim",
+		"jay-babu/mason-null-ls.nvim",
+	},
+}
 completion["hrsh7th/nvim-cmp"] = {
 	lazy = true,
 	event = "InsertEnter",
@@ -68,6 +67,7 @@ completion["hrsh7th/nvim-cmp"] = {
 		{ "hrsh7th/cmp-path" },
 		{ "f3fora/cmp-spell" },
 		{ "hrsh7th/cmp-buffer" },
+		{ "lukas-reineke/cmp-under-comparator" },
 		{ "ray-x/cmp-treesitter", commit = "c8e3a74" },
 		-- { "tzachar/cmp-tabnine", build = "./install.sh", config = require("completion.tabnine") },
 		-- {

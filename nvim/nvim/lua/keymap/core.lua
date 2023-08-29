@@ -2,8 +2,8 @@ local map = require("core.keymap")
 
 vim.g.mapleader = " "
 
-map({"n","x"}, " ", "", { noremap = true , desc = "space"})
-map({"n","x"}, ";", "", { noremap = true , desc = ";"})
+map({ "n", "x" }, " ", "", { noremap = true, desc = "space" })
+map({ "n", "x" }, ";", "", { noremap = true, desc = ";" })
 
 -- better up/down
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
@@ -63,7 +63,6 @@ map("v", ">", ">gv")
 
 --map("n", "<leader>xl", "<cmd>lopen<cr>", { desc = "Location List" })
 --map("n", "<leader>xq", "<cmd>copen<cr>", { desc = "Quickfix List" })
-
 
 -- highlights under cursor
 if vim.fn.has("nvim-0.9.0") == 1 then
