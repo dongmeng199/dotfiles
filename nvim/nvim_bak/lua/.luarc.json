@@ -1,8 +1,0 @@
-{
-    "workspace.library": [
-        "/Users/meng.dong/.local/share/lazy/lazy/neodev.nvim/types/stable",
-        "/nix/store/gk6dzxicwpxczjfn3kl3dpxbpwyhlfq6-neovim-unwrapped-0.9.1/share/nvim/runtime/lua",
-        "/Users/meng.dong/code/dotfiles/nvim/nvim/lua",
-        "${3rd}/luv/library"
-    ]
-}

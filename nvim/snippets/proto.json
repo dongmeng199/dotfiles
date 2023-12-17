@@ -1,0 +1,9 @@
+{
+    "rpc": {
+        "prefix": "rpc",
+        "body": ["
+  rpc $0($0Req) returns ($0Rsp);
+"],
+        "description": "rpc function"
+    },
+}
