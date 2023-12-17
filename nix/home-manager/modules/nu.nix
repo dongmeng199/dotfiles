@@ -17,8 +17,7 @@
          "/sbin"
       ]
       $env.EDITOR = "nvim"
-      $env.XDG_CONFIG_HOME = $"($env.HOME)/code/dotfiles/nvim"
-      $env.NVIM_APPNAME = "lazy"
+      $env.NVIM_APPNAME = "nvim"
       $env.HOMEBREW_PREFIX = "/opt/homebrew"
       $env.HOMEBREW_CELLAR = "/opt/homebrew/Cellar"
       $env.HOMEBREW_REPOSITORY = "/opt/homebrew"

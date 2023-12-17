@@ -71,7 +71,6 @@ local disable_distribution_plugins = function()
 	-- vim.g.loaded_remote_plugins = 1
 end
 
-
 local neovide_config = function()
 	vim.api.nvim_set_option_value("guifont", "JetBrainsMono Nerd Font:h15", {})
 	vim.g.neovide_refresh_rate = 120
